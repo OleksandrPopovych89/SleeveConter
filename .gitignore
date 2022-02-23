@@ -1,0 +1,16 @@
+.idea/*
+src/main/resources/*
+target/*
+
+*.class
+
+*.jar
+*.var
+*.ear
+
+*.txt
+*.xls
+*.xlsx
+*.docx
+# Project exclude paths
+/.gradle/
