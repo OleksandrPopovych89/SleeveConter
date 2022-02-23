@@ -1,4 +1,4 @@
-package Data;
+package pipedetails;
 
 public class Fitting {
     private String name;

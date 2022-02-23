@@ -1,6 +1,6 @@
-package Services;
+package services;
 
-import Data.Fitting;
+import pipedetails.Fitting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class ESorter {
         String threadInternalElbow = "Кутник із внутрішньою різьбою.";
         String wallThreadInternalElbow = "Кутник настінний із внутрішньою різьбою.";
         String tee = "Трійник рівнопрохідний/редукційний, латунь.";
-        String clutch = "Муфта з'єднувальна пряма/перехідна.";
+        String clutch = "Муфта з'єднувальна пряма/перехідна, латунь.";
         String copperPipe = "Мідна нікельована трубка 300 мм.";
 
 

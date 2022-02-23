@@ -1,4 +1,4 @@
-package Data;
+package pipedetails;
 
 public class Sleeve {
     private double diameter16 = 0;
