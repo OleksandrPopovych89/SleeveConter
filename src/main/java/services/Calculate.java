@@ -1,15 +1,14 @@
-package Services;
+package services;
 
-import Data.Fitting;
-import Data.Sleeve;
+import pipedetails.Fitting;
+import pipedetails.Sleeve;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static Services.SleeveCounting.tooCount;
+import static services.SleeveCounting.tooCount;
 
 
 public class Calculate {
@@ -18,7 +17,6 @@ public class Calculate {
 
         StringBuilder stringBuilder = new StringBuilder();
         List<Fitting> list = new ArrayList<>();
-        //        way = FileChooser.fileChoose();
         Date date1 = new Date();
         for (
                 int i = 0;
@@ -48,8 +46,6 @@ public class Calculate {
         System.out.println("----------------------------");
         String request = stringBuilder.toString();
         System.out.println(request);
-        File file = new File(way);
-        file.delete();
         return request;
     }
 }

@@ -4,11 +4,10 @@ target/*
 
 *.class
 
-*.jar
+#*.jar
 *.var
 *.ear
 
-*.txt
 *.xls
 *.xlsx
 *.docx

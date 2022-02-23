@@ -1,28 +1,20 @@
 package telegram;
 
-import Services.Calculate;
-import lombok.SneakyThrows;
+import services.Calculate;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Bot extends TelegramLongPollingBot {
-
-
-    @Override
-    @SneakyThrows
     public void onUpdateReceived(Update update) {
         final Document document = update.getMessage().getDocument();
         if (document != null) {
@@ -34,52 +26,80 @@ public class Bot extends TelegramLongPollingBot {
             String fileWay = uploadFile(fileName, fileId);
             String request = Calculate.calculate(fileWay);
             Message message = update.getMessage();
-            execute(SendMessage.builder()
-                    .chatId(message.getChatId().toString())
-                    .text(request)
-                    .build());
+            try {
+                execute(SendMessage.builder()
+                        .chatId(message.getChatId().toString())
+                        .text(request)
+                        .build());
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    @Override
     public String getBotUsername() {
-        return "@Sleevebot";
+        return "@SleeveBot";
     }
 
-    @Override
     public String getBotToken() {
-        return "5255774293:AAGv9MyE7HNm1s3be_m8Jf6iF1X_tWo1j3w";
+        return "5255774293:AAGO_ldCdk52VlG4H6aGmKILzQGYW83LV1w";
     }
-
-
-    @SneakyThrows
-    public static void main(String[] args) {
-        Bot bot = new Bot();
-        TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-        telegramBotsApi.registerBot(bot);
-    }
-
-    @SneakyThrows
     public String uploadFile(String fileName, String fileId) {
 
-        URL url = new URL("https://api.telegram.org/bot" + getBotToken() + "/getFile?file_id=" + fileId);
+        URL url = null;
+        try {
+            url = new URL("https://api.telegram.org/bot" + getBotToken() + "/getFile?file_id=" + fileId);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         System.out.println(url);
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-        String getFileResponse = br.readLine();
+        BufferedReader br = null;
+        try {
+            assert url != null;
+            br = new BufferedReader(new InputStreamReader(url.openStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String getFileResponse = null;
+        try {
+            assert br != null;
+            getFileResponse = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        assert getFileResponse != null;
         JSONObject jResult = new JSONObject(getFileResponse);
         JSONObject path = jResult.getJSONObject("result");
         String filePath = path.getString("file_path");
         System.out.println(filePath);
 
         File localFile = new File("src/main/resources/uploaded_files/" + fileName);
-        InputStream is = new URL("https://api.telegram.org/file/bot" +
-                getBotToken() + "/" + filePath).openStream();
-        FileUtils.copyInputStreamToFile(is, localFile);
+        InputStream is = null;
+        try {
+            is = new URL("https://api.telegram.org/file/bot" +
+                    getBotToken() + "/" + filePath).openStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            assert is != null;
+            FileUtils.copyInputStreamToFile(is, localFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        br.close();
-        is.close();
+        try {
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("Uploaded!");
         return localFile.toString();

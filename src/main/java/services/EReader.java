@@ -1,6 +1,6 @@
-package Services;
+package services;
 
-import Data.Fitting;
+import pipedetails.Fitting;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Workbook;
 
@@ -19,8 +19,8 @@ public class EReader {
                 String secondName = wb.getSheetAt(j).getRow(i - 1).getCell(2).getStringCellValue();
                 int count = (int) wb.getSheetAt(j).getRow(i - 1).getCell(6).getNumericCellValue();
                 line.add(new Fitting(s, secondName, count));
-            } catch (Exception ignored) {
-
+            } catch (Exception e) {
+//                e.printStackTrace();
             }
         }
     }

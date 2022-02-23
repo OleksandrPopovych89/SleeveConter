@@ -1,7 +1,7 @@
-package Services;
+package services;
 
-import Data.Fitting;
-import Data.Sleeve;
+import pipedetails.Fitting;
+import pipedetails.Sleeve;
 
 import java.util.List;
 
