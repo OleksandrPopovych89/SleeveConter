@@ -11,5 +11,6 @@ target/*
 *.xls
 *.xlsx
 *.docx
+*.bin
 # Project exclude paths
 /.gradle/

@@ -6,12 +6,7 @@ public class Sleeve {
     private double diameter25 = 0;
     private double diameter32 = 0;
 
-    public Sleeve(double diameter16, double diameter20, double diameter25, double diameter32) {
-        this.diameter16 = diameter16;
-        this.diameter20 = diameter20;
-        this.diameter25 = diameter25;
-        this.diameter32 = diameter32;
-    }
+    private static final String units = "шт.";
 
     public Sleeve() {
     }
@@ -50,9 +45,9 @@ public class Sleeve {
 
     @Override
     public String toString() {
-        return "Гільзи діаметром 16 - " + diameter16 + " шт.\n"
-                + "Гільзи діаметром 20 - " + diameter20 + " шт.\n"
-                + "Гільзи діаметром 25 - " + diameter25 + " шт.\n"
-                + "Гільзи діаметром 32 - " + diameter32 + " шт.\n";
+        return "Гільзи діаметром 16 - " + diameter16 + " " + units + "\n"
+                + "Гільзи діаметром 20 - " + diameter20 + " " + units + "\n"
+                + "Гільзи діаметром 25 - " + diameter25 + " " + units + "\n"
+                + "Гільзи діаметром 32 - " + diameter32 + " " + units + "\n";
     }
 }
