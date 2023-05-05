@@ -1,5 +1,7 @@
 package telegram;
 
+import lombok.NoArgsConstructor;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
 import services.Calculate;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
@@ -13,8 +15,12 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+@NoArgsConstructor
 public class Bot extends TelegramLongPollingBot {
+    public Bot(DefaultBotOptions options, String botToken) {
+        super(options, botToken);
+    }
+
     public void onUpdateReceived(Update update) {
         final Document document = update.getMessage().getDocument();
         if (document != null) {
@@ -41,6 +47,7 @@ public class Bot extends TelegramLongPollingBot {
         return "@SleeveBot";
     }
 
+    @Override
     public String getBotToken() {
         return "5255774293:AAGO_ldCdk52VlG4H6aGmKILzQGYW83LV1w";
     }

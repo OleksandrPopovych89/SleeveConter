@@ -1,4 +1,6 @@
 .idea/*
+.build/*
+
 src/main/resources/*
 target/*
 

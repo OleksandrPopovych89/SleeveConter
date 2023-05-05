@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ESorter {
+    private ESorter() {
+    }
 
     public static List<Fitting> sortLineExcel(List<Fitting> oldList) {
         String nipple1 = "Перехідник прямий із зовнішньою різьбою.";

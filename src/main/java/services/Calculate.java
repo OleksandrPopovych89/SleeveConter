@@ -12,6 +12,8 @@ import static services.SleeveCounting.tooCount;
 
 
 public class Calculate {
+    private Calculate() {
+    }
 
     public static String calculate(String way) {
 
