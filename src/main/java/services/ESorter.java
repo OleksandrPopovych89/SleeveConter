@@ -21,6 +21,7 @@ public class ESorter {
         String wallThreadInternalElbow = "Кутник настінний із внутрішньою різьбою.";
         String wallThreadInternalElbowLong = "Кутник настінний із внутрішньою різьбою, довгий.";
         String tee = "Трійник рівнопрохідний/редукційний, латунь.";
+        String teeNipel = "Трійник різьбовий редукційний, латунь.";
         String clutch = "Муфта з'єднувальна пряма/перехідна, латунь.";
         String copperPipe1 = "Мідна нікельована трубка 300 мм.";
         String copperPipe2 = "Мідна нікельована трубка 770 мм.";
@@ -39,6 +40,7 @@ public class ESorter {
                     || fitting.getName().equals(wallThreadInternalElbow)
                     || fitting.getName().equals(wallThreadInternalElbowLong)
                     || fitting.getName().equals(tee)
+                    || fitting.getName().equals(teeNipel)
                     || fitting.getName().equals(clutch)
                     || fitting.getName().equals(copperPipe1)
                     || fitting.getName().equals(copperPipe2)
