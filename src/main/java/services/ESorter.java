@@ -2,53 +2,35 @@ package services;
 
 import pipedetails.Fitting;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ESorter {
     private ESorter() {
     }
 
     public static List<Fitting> sortLineExcel(List<Fitting> oldList) {
-        String nipple1 = "Перехідник прямий із зовнішньою різьбою.";
-        String nipple2 = "Перехідник прямий із зовнішнім різьбленням.";
-        String threadInternal1 = "Перехідник прямий із внутрішньою різьбою.";
-        String threadInternal2 = "Перехідник прямий із внутрішнім різьбленням.";
-        String euroCones = "Гвинтове з'єднання 3/4\" (євроконус) з прес з'єднанням.";
-        String elbow = "Кутник з‘єднувальний 90°, латунь.";
-        String nippleElbow = "Кутник із зовнішньою різьбою.";
-        String threadInternalElbow = "Кутник із внутрішньою різьбою.";
-        String wallThreadInternalElbow = "Кутник настінний із внутрішньою різьбою.";
-        String wallThreadInternalElbowLong = "Кутник настінний із внутрішньою різьбою, довгий.";
-        String tee = "Трійник рівнопрохідний/редукційний, латунь.";
-        String teeNipel = "Трійник різьбовий редукційний, латунь.";
-        String clutch = "Муфта з'єднувальна пряма/перехідна, латунь.";
-        String copperPipe1 = "Мідна нікельована трубка 300 мм.";
-        String copperPipe2 = "Мідна нікельована трубка 770 мм.";
+        List<String> fittingNamesToInclude = Arrays.asList(
+                "Перехідник прямий із зовнішньою різьбою.",
+                "Перехідник прямий із зовнішнім різьбленням.",
+                "Перехідник прямий із внутрішньою різьбою.",
+                "Перехідник прямий із внутрішнім різьбленням.",
+                "Гвинтове з'єднання 3/4\" (євроконус) з прес з'єднанням.",
+                "Кутник з'єднувальний 90°, латунь.",
+                "Кутник із зовнішньою різьбою.",
+                "Кутник із внутрішньою різьбою.",
+                "Кутник настінний із внутрішньою різьбою.",
+                "Кутник настінний із внутрішньою різьбою, довгий.",
+                "Трійник рівнопрохідний/редукційний, латунь.",
+                "Трійник різьбовий редукційний, латунь.",
+                "Муфта з'єднувальна пряма/перехідна, латунь.",
+                "Мідна нікельована трубка 300 мм.",
+                "Мідна нікельована трубка 770 мм."
+        );
 
-
-        List<Fitting> newList = new ArrayList<>();
-        for (Fitting fitting : oldList) {
-            if (fitting.getName().equals(nipple1)
-                    || fitting.getName().equals(nipple2)
-                    || fitting.getName().equals(threadInternal1)
-                    || fitting.getName().equals(threadInternal2)
-                    || fitting.getName().equals(euroCones)
-                    || fitting.getName().equals(elbow)
-                    || fitting.getName().equals(nippleElbow)
-                    || fitting.getName().equals(threadInternalElbow)
-                    || fitting.getName().equals(wallThreadInternalElbow)
-                    || fitting.getName().equals(wallThreadInternalElbowLong)
-                    || fitting.getName().equals(tee)
-                    || fitting.getName().equals(teeNipel)
-                    || fitting.getName().equals(clutch)
-                    || fitting.getName().equals(copperPipe1)
-                    || fitting.getName().equals(copperPipe2)
-            ) {
-                newList.add(fitting);
-            }
-        }
-        return newList;
+        return oldList.stream()
+                .filter(fitting -> fittingNamesToInclude.contains(fitting.getName()))
+                .collect(Collectors.toList());
     }
-
 }
