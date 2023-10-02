@@ -13,6 +13,7 @@ import lombok.Setter;
 public class Fitting {
     private String name;
     private String designation;
+    private String vendor;
     private double quantity;
 
     @Override

@@ -28,8 +28,13 @@ public final class EReader {
             try {
                 String s = wb.getSheetAt(j).getRow(i - 1).getCell(1).getStringCellValue();
                 String secondName = wb.getSheetAt(j).getRow(i - 1).getCell(2).getStringCellValue();
+                String vendor = wb.getSheetAt(j).getRow(i - 1).getCell(5).getStringCellValue();
+                System.out.println(vendor);
                 int count = (int) wb.getSheetAt(j).getRow(i - 1).getCell(6).getNumericCellValue();
-                line.add(new Fitting(s, secondName, count));
+                if (vendor != null && !vendor.trim().isEmpty()) {
+                    line.add(new Fitting(s, secondName, vendor, count));
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
