@@ -15,6 +15,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 @NoArgsConstructor
 public class Bot extends TelegramLongPollingBot {
     public Bot(DefaultBotOptions options, String botToken) {
@@ -29,19 +30,33 @@ public class Bot extends TelegramLongPollingBot {
 
             System.out.println(fileId);
             System.out.println(fileName);
+
             String fileWay = uploadFile(fileName, fileId);
             String request = Calculate.calculate(fileWay);
-            Message message = update.getMessage();
-            try {
-                execute(SendMessage.builder()
-                        .chatId(message.getChatId().toString())
-                        .text(request)
-                        .build());
-            } catch (TelegramApiException e) {
-                e.printStackTrace();
+
+            int messageLengthLimit = 4096;
+            int totalLength = request.length();
+            int numberOfMessages = (int) Math.ceil((double) totalLength / messageLengthLimit);
+
+            for (int i = 0; i < numberOfMessages; i++) {
+                int startIndex = i * messageLengthLimit;
+                int endIndex = Math.min((i + 1) * messageLengthLimit, totalLength);
+
+                String messagePart = request.substring(startIndex, endIndex);
+
+                try {
+                    execute(SendMessage.builder()
+                            .chatId(update.getMessage().getChatId().toString())
+                            .text(messagePart)
+                            .build());
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
+
+
 
     public String getBotUsername() {
         return "@SleeveBot";
@@ -51,6 +66,7 @@ public class Bot extends TelegramLongPollingBot {
     public String getBotToken() {
         return "5255774293:AAGO_ldCdk52VlG4H6aGmKILzQGYW83LV1w";
     }
+
     public String uploadFile(String fileName, String fileId) {
 
         URL url = null;
