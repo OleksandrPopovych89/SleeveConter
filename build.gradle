@@ -26,18 +26,18 @@ dependencies {
 
 
     // https://mvnrepository.com/artifact/org.apache.poi/poi
-    implementation group: 'org.apache.poi', name: 'poi', version: '5.2.3'
+    implementation group: 'org.apache.poi', name: 'poi', version: '5.2.4'
 
     // https://mvnrepository.com/artifact/org.telegram/telegrambots
-    implementation group: 'org.telegram', name: 'telegrambots', version: '6.7.0'
+    implementation group: 'org.telegram', name: 'telegrambots', version: '6.8.0'
 
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
-    implementation 'org.slf4j:slf4j-simple:2.0.7'
+    implementation 'org.slf4j:slf4j-simple:2.0.9'
 
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
-    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
 // https://mvnrepository.com/artifact/org.projectlombok/lombok
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
 
 }
 
