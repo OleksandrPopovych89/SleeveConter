@@ -32,7 +32,9 @@ public class Calculate {
             list = ESorter.sortLineExcel(list);
             int count = 1;
             for (Fitting fitting : list) {
-                stringBuilder.append(count).append(") ").append(fitting).append("\n");
+                stringBuilder.append(count).append(") ")
+                        .append(fitting)
+                        .append("\n");
                 count++;
             }
             Sleeve sleeves = tooCount(list);

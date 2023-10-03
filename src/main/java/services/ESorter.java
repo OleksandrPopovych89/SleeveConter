@@ -21,8 +21,8 @@ public class ESorter {
         );
 
         return oldList.stream()
-                .filter(fitting -> fitting.getQuantity() != 0 ||
-                        !fitting.getVendor().equalsIgnoreCase("Tece"))
+                .filter(fitting -> fitting.getQuantity() != 0 &&
+                        fitting.getVendor().equalsIgnoreCase("Tece"))
                 .filter(fitting -> fittingNamesToInclude.
                         stream().anyMatch(s -> fitting.getName().contains(s)))
                 .collect(Collectors.toList());

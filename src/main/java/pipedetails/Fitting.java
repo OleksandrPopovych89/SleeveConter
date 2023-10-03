@@ -18,6 +18,7 @@ public class Fitting {
 
     @Override
     public String toString() {
-        return String.format("%s%nТипорозмір %s , кількістю %s  шт.%n", name, designation, quantity);
+        return String.format("%s\nТипорозмір %s , кількістю %s шт. вирбник %s\n",
+                name, designation, quantity, vendor);
     }
 }
