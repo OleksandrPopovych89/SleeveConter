@@ -13,6 +13,7 @@ public class ESorter {
     public static List<Fitting> sortLineExcel(List<Fitting> oldList) {
         List<String> fittingNamesToInclude = Arrays.asList(
                 "Перехідник",
+                "Накидна гайка",
                 "Гвинтове",
                 "Кутник",
                 "Трійник",
