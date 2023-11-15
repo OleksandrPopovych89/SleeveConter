@@ -1,16 +1,15 @@
 package telegram;
 
 import lombok.NoArgsConstructor;
-import org.telegram.telegrambots.bots.DefaultBotOptions;
-import services.Calculate;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Document;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import services.Calculate;
 
 import java.io.*;
 import java.net.MalformedURLException;
